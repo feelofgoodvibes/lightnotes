@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #111111;
+    background-color: var(--primary);
     margin: 0;
     font-family: "Montserrat";
     height: 100%;
@@ -17,13 +17,21 @@ body {
 }
 
 nav {
-    background-color: #252525;
+    background-color: var(--primary-light);
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 10px 5px;
-    gap: 5px;
 }
+
+:root {
+    --primary: #111111;
+    --primary-light: #252525;
+    --font: #e6e6e6;
+    --red: #DC3545;
+}
+
+/* ------------------- */
 
 #nav-icon {
     width: 35px;
@@ -31,17 +39,69 @@ nav {
 }
 
 #nav-title {
-    font-size: 20pt;
-    color: #e6e6e6;
     text-decoration: none;
+}
+
+.nav-text {
+    font-size: 20pt;
+    color: var(--font);
 }
 
 
 .center-box {
     background-color: #252525;
-    border: 1px solid #e6e6e6;
+    border: 1px solid var(--font);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     max-width: 500px;
+}
+
+#nav-logout {
+    float: right;
+    color: var(--red);
+    padding: 5px 10px;
+    border: 1px solid var(--red);
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#nav-logout:hover {
+    background-color: var(--red);
+    color: var(--font);
+    transition: .2s;
+}
+
+.nav-right {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-left {
+    flex: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ------------------- */
+
+#floating-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    color: var(--font);
+}
+
+#floating-create {
+    background-color: var(--primary);
+    color: var(--font);
+    border: 2px solid var(--font);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 15pt;
+    opacity: 80%;
 }

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
 import os
 
 from sqlalchemy import Column, ForeignKey, text
@@ -23,7 +23,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = "user"
 
     id = Column(db.Integer, primary_key=True, autoincrement=True)
@@ -44,7 +44,7 @@ class Note(db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.filter(User.id==user_id)
+    return User.query.filter(User.id==user_id).first()
 
 if __name__ == "__main__":
     if os.path.exists(DATABASE_PATH):
