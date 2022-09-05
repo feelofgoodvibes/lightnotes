@@ -110,11 +110,6 @@ nav {
     margin: auto;
 }
 
-#create-form {
-    display: flex;
-    flex-direction: column;
-}
-
 form input, form textarea {
     background-color: var(--primary-light);
     border: 1px solid var(--font);
@@ -150,6 +145,16 @@ form input:focus, form textarea:focus {
 #noacc-link {
     font-size: calc(var(--font-size) - 4pt);
 }
+
+/* ------------ CREATE FROM ------------ */
+
+#create-form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 10px;
+}
+
 
 /* ------------------- */
 
