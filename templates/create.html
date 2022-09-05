@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for m in messages %}
+        <h1>{{ m }}</h1>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<nav>
+    <div class="nav-left">
+        <img id="nav-icon" src="{{ url_for('static', filename='favicon.svg') }}">
+        <a id="nav-title" class="nav-text" href="/">Light Notes</a>
+        <span class="nav-text">| {{ current_user.login }}</span>
+    </div>
+    
+    <div class="nav-right">
+        <a id="nav-logout" href="/logout">Logout</a>
+    </div>
+</nav>
+
+<form id="create-form" method="POST" action="/create">
+    <input type="text" name="title" placeholder="Title...">
+    <textarea name="text" placeholder="Text..."></textarea>
+    <button>Create</button>
+</form>
+
+{% endblock %}

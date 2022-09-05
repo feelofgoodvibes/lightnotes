@@ -10,6 +10,7 @@
 
 body {
     background-color: var(--primary);
+    color: var(--font);
     margin: 0;
     font-family: "Montserrat";
     height: 100%;
@@ -89,6 +90,13 @@ nav {
 
 /* ------------------- */
 
+#create-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------- */
+
 #floating-actions {
     position: fixed;
     bottom: 20px;
@@ -104,4 +112,5 @@ nav {
     border-radius: 50%;
     font-size: 15pt;
     opacity: 80%;
+    text-decoration: none;
 }

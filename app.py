@@ -68,7 +68,9 @@ def logout():
 @app.route("/")
 @login_required
 def index():
-    return render_template("index.html")
+    user_notes = Note.query.filter(Note.author==current_user.id).all()
+
+    return render_template("index.html", notes=user_notes)
 
 
 @app.route("/create", methods=["GET", "POST"])
@@ -94,6 +96,16 @@ def create():
 
         return redirect("/note/"+str(new_note.id))
 
+
+@app.route("/note/<int:note_id>")
+@login_required
+def note(note_id):
+    note = Note.query.filter(Note.id==note_id).first()
+
+    if not note or note.author != current_user.id:
+        return redirect("/")
+
+    return "hehe"
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -14,8 +14,14 @@
     </div>
 </nav>
 
+<div id="notes">
+    {% for note in notes %}
+    <div class="note-prev">{{ note.text }}</div>
+    {% endfor %}
+</div>
+
 <div id="floating-actions">
-    <span id="floating-create">✎</span>
+    <a id="floating-create" href="/create">✎</a>
 </div>
 
 {% endblock %}
