@@ -15,6 +15,12 @@ body {
     font-family: "Montserrat";
     height: 100%;
     width: 100%;
+    font-size: var(--font-size);
+}
+
+a {
+    font-size: var(--font-size);
+    color: var(--font);
 }
 
 nav {
@@ -30,6 +36,7 @@ nav {
     --primary-light: #252525;
     --font: #e6e6e6;
     --red: #DC3545;
+    --font-size: 15pt;
 }
 
 /* ------------------- */
@@ -46,16 +53,6 @@ nav {
 .nav-text {
     font-size: 20pt;
     color: var(--font);
-}
-
-
-.center-box {
-    background-color: #252525;
-    border: 1px solid var(--font);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
 }
 
 #nav-logout {
@@ -90,9 +87,68 @@ nav {
 
 /* ------------------- */
 
+.center-box {
+    background-color: #252525;
+    border: 1px solid var(--font);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    padding: 50px 40px;
+    gap: 10px;
+    text-align: center;
+}
+
+.center-screen {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+}
+
+#login-form, #signup-form {
+    margin: auto;
+}
+
 #create-form {
     display: flex;
     flex-direction: column;
+}
+
+form input, form textarea {
+    background-color: var(--primary-light);
+    border: 1px solid var(--font);
+    color: var(--font);
+    font-size: var(--font-size);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+form button {
+    background-color: var(--primary-light);
+    border: 1px solid var(--font);
+    color: var(--font);
+    font-size: var(--font-size);
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+form button:hover {
+    cursor: pointer;
+    background-color: var(--font);
+    border: 1px solid var(--primary-light);
+    color: var(--primary-light);
+    font-size: var(--font-size);
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    background-color: var(--font);
+    color: var(--primary-light);
+}
+
+#noacc-link {
+    font-size: calc(var(--font-size) - 4pt);
 }
 
 /* ------------------- */
@@ -113,4 +169,19 @@ nav {
     font-size: 15pt;
     opacity: 80%;
     text-decoration: none;
+}
+
+/* ------------ MESSAGES ------------ */
+
+#messages-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.message {
+    background-color: var(--red);
+    color: var(--font);
+    padding: 5px 10px;
 }
