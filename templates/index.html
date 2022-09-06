@@ -23,7 +23,12 @@
     <div id="note-{{note.id}}" class="note-prev">
         <div class="note-info">
             <span class="note-prev-title" onclick="location.href = '/note/' + this.parentElement.parentElement.id.slice(5)">{{ note.title }}</span>
-            <span class="note-prev-created">Created: {{ note.created.strftime("%x %X") }}</span>
+            <div class="date-row">
+                <span class="note-prev-created">Created: {{ note.created.strftime("%x %X") }}</span>
+                {% if note.edited %}
+                <span class="note-prev-created">Edited: {{ note.edited.strftime("%x %X") }}</span>
+                {% endif %}
+            </div>
         </div>
         <span class="note-prev-delete">x</span>
     </div>

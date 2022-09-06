@@ -135,6 +135,9 @@ def note(note_id):
         title = request.form.get("title")
         text = request.form.get("text")
 
+        print(f"Title: [{title}]", flush=True)
+        print("Text:", text, flush=True)
+
         if not text:
             return ({"error": "Text field is empty"}), 400
 

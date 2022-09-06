@@ -244,16 +244,38 @@ form input:focus, form textarea:focus {
     align-items: center;
 }
 
+.date-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .note-prev-title {
     word-break: break-all;
     cursor: pointer;
     font-weight: bold;
     font-size: calc(var(--font-size) - 2pt);
+    transition: .2s;
+}
+
+.note-prev-title:hover {
+    color: var(--accent);
+    transition: .2s;
 }
 
 .note-prev-created {
     font-size: calc(var(--font-size) - 5pt);
     opacity: 0.45;
+}
+
+.note-prev-delete {
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.note-prev-delete:hover {
+    transition: .2s;
+    color: var(--red);
 }
 
 /* ------------ NOTE VIEW ------------ */

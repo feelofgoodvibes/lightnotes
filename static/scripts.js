@@ -1,5 +1,4 @@
 window.addEventListener("load", () => {
-    console.log(1);
     if (location.href.split("/").includes("note")) initEdit();
 });
 
@@ -31,5 +30,22 @@ function initEdit() {
             textElement.contentEditable = true;
             titleElement.focus();
         }
+    });
+
+    saveButton.addEventListener("click", () => {
+        $.ajax({
+            url: location.pathname,
+            method: "PUT",
+            data: {
+                "title": titleElement.textContent,
+                "text": textElement.textContent
+            },
+
+            success: (resp) => { location.reload(); },
+            error: (resp) => { 
+                $.notify(resp.responseJSON['error']);
+            }
+        });
+
     });
 }
