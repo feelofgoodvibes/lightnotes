@@ -90,6 +90,9 @@ def create():
         if not title:
             title = text[:20] + "..."
 
+        if len(title) > 100:
+            title = title[:100]
+
         new_note = Note(title=title, text=text, author=current_user.id)
         db.session.add(new_note)
         db.session.commit()

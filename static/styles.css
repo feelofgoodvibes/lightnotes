@@ -38,11 +38,11 @@ nav {
 :root {
     --primary: #000000;
     --primary-light: #111111;
-    --font: #FCFBFE;
+    --font: #F9F9F9;
     --red: #DC3545;
     --font-size: 15pt;
 
-    --accent: #ecdd00;
+    --accent: #FFD52E;
 }
 
 /* ------------------- */
@@ -69,6 +69,7 @@ nav {
     border: 1px solid var(--red);
     border-radius: 10px;
     text-decoration: none;
+    font-size: calc(var(--font-size) - 4pt);
 }
 
 #nav-logout:hover {
@@ -233,6 +234,7 @@ form input:focus, form textarea:focus {
 }
 
 .note-prev-title {
+    word-break: break-all;
     cursor: pointer;
     font-weight: bold;
     font-size: calc(var(--font-size) - 2pt);
@@ -240,7 +242,7 @@ form input:focus, form textarea:focus {
 
 .note-prev-created {
     font-size: calc(var(--font-size) - 5pt);
-    opacity: 0.4;
+    opacity: 0.45;
 }
 
 /* ------------ FLOATING ACTIONS ------------ */
