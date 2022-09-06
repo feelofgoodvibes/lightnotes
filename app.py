@@ -1,6 +1,5 @@
-from flask import request, flash, jsonify
-from flask_login import current_user
-from sqlalchemy import desc
+from flask import request, flash, jsonify, render_template, redirect
+from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from objects import *
 
@@ -85,6 +84,7 @@ def create():
         title = request.form.get("title")
         text = request.form.get("text")
 
+        # Input data validation
         if not text:
             flash("Cannot create empty note")
             return redirect("/create")
@@ -95,6 +95,7 @@ def create():
         if len(title) > 100:
             title = title[:100]
 
+        # Validation is OK, creating new note
         new_note = Note(title=title, text=text, author=current_user.id)
         db.session.add(new_note)
         db.session.commit()
@@ -136,9 +137,7 @@ def note(note_id):
         title = request.form.get("title")
         text = request.form.get("text")
 
-        print(f"Title: [{title}]", flush=True)
-        print("Text:", text, flush=True)
-
+        # Input arguments validation
         if not text:
             return ({"error": "Text field is empty"}), 400
 
@@ -148,13 +147,15 @@ def note(note_id):
         if not title:
             title = text[:100]
 
+        # Validation is OK - putting new data into DB
         note.title = title
         note.text = text
-        note.edited = datetime.datetime.now()
+        note.edited = datetime.datetime.now()   # Note is edited, changing edit date
 
         db.session.commit()
 
         return ({"status": "OK"}), 204
+
 
 if __name__ == "__main__":
     app.run(debug=True)

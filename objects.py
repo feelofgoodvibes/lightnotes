@@ -1,15 +1,15 @@
-from flask import Flask, render_template, redirect
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
+from flask_login import LoginManager, UserMixin
 import os
-
-from sqlalchemy import Column, ForeignKey, text
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-
 import datetime
 
+from sqlalchemy import Column, ForeignKey
+from sqlalchemy.orm import relationship
+
+
 basedir = os.path.dirname(os.path.realpath(__file__))
+
 app = Flask(__name__)
 app.secret_key = "__jf*DJ*39h8FFF11234"
 
@@ -24,6 +24,8 @@ db = SQLAlchemy(app)
 
 
 class User(UserMixin, db.Model):
+    '''A model that represents a User'''
+
     __tablename__ = "user"
 
     id = Column(db.Integer, primary_key=True, autoincrement=True)
@@ -31,7 +33,10 @@ class User(UserMixin, db.Model):
     login = Column(db.String)
     password = Column(db.String)
 
+
 class Note(db.Model):
+    '''A model that represents a Note'''
+
     __tablename__ = "note"
 
     id = Column(db.Integer, primary_key=True, autoincrement=True)
@@ -46,10 +51,12 @@ class Note(db.Model):
 def load_user(user_id):
     return User.query.filter(User.id==user_id).first()
 
+# If there is no database file - create one with empty tables
 if not os.path.exists(DATABASE_PATH):
     db.create_all()
 
 if __name__ == "__main__":
+    # Clear database if objects.py launched
     if os.path.exists(DATABASE_PATH):
         os.remove(DATABASE_PATH)
         db.create_all()
