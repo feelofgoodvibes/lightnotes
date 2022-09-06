@@ -1,4 +1,4 @@
-from flask import request, flash
+from flask import request, flash, jsonify
 from flask_login import current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from objects import *
@@ -60,6 +60,7 @@ def login():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect("/login")
@@ -103,19 +104,53 @@ def create():
 @app.route("/note/<int:note_id>", methods=["GET", "PUT", "DETETE"])
 @login_required
 def note(note_id):
-    if request.method == "GET":
-        note = Note.query.filter(Note.id==note_id).first()
+    note_query = Note.query.filter(Note.id==note_id)
+    note = note_query.first()
 
+    if request.method == "GET":
         if not note or note.author != current_user.id:
             return redirect("/")
 
         return render_template("note.html", note=note)
     
     elif request.method == "DELETE":
-        pass
+        if not note:
+            return jsonify({"error": "Note does not exists"}), 404
+
+        if note.author != current_user.id:
+            return ({"error": "Access denied"}), 403
+
+        note_query.delete()
+        db.session.commit()
+
+        return ({"status": "OK"}), 204
 
     elif request.method == "PUT":
-        pass
+        if not note:
+            return jsonify({"error": "Note does not exists"}), 404
+
+        if note.author != current_user.id:
+            return ({"error": "Access denied"}), 403
+
+        title = request.form.get("title")
+        text = request.form.get("text")
+
+        if not text:
+            return ({"error": "Text field is empty"}), 400
+
+        if len(title) > 100:
+            return ({"error": "Maximum length of title field is 100"}), 400
+
+        if not title:
+            title = text[:100]
+
+        note.title = title
+        note.text = text
+        note.edited = datetime.datetime.now()
+
+        db.session.commit()
+
+        return ({"status": "OK"}), 204
 
 if __name__ == "__main__":
     app.run(debug=True)
