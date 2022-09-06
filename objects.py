@@ -46,6 +46,9 @@ class Note(db.Model):
 def load_user(user_id):
     return User.query.filter(User.id==user_id).first()
 
+if not os.path.exists(DATABASE_PATH):
+    db.create_all()
+
 if __name__ == "__main__":
     if os.path.exists(DATABASE_PATH):
         os.remove(DATABASE_PATH)
