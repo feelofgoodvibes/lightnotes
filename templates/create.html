@@ -6,14 +6,6 @@
 
 {% block body %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-    {% for m in messages %}
-        <h1>{{ m }}</h1>
-    {% endfor %}
-{% endif %}
-{% endwith %}
-
 <nav>
     <div class="nav-left">
         <img id="nav-icon" src="{{ url_for('static', filename='favicon.svg') }}">
@@ -22,13 +14,26 @@
     </div>
     
     <div class="nav-right">
-        <a id="nav-logout" href="/logout">Logout</a>
+        <a id="nav-logout" href="/">Cancel</a>
     </div>
 </nav>
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div id="messages-feed">
+    {% for m in messages %}
+        <div class="message">
+            <span>{{ m }}</span>
+            <span class="message-close" onclick="this.parentElement.remove();">x</span>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
+
 <form id="create-form" method="POST" action="/create">
-    <input type="text" name="title" placeholder="Title...">
-    <textarea name="text" placeholder="Text..."></textarea>
+    <input id="create-title" type="text" name="title" placeholder="Title...">
+    <textarea id="create-text" name="text" placeholder="Text..."></textarea>
     <button>Create</button>
 </form>
 

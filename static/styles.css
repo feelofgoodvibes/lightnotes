@@ -37,6 +37,8 @@ nav {
     --font: #e6e6e6;
     --red: #DC3545;
     --font-size: 15pt;
+
+    --accent: #ecdd00;
 }
 
 /* ------------------- */
@@ -48,6 +50,7 @@ nav {
 
 #nav-title {
     text-decoration: none;
+    color: var(--accent);
 }
 
 .nav-text {
@@ -153,8 +156,47 @@ form input:focus, form textarea:focus {
     flex-direction: column;
     padding: 15px 20px;
     gap: 10px;
+    height: 80vh;
 }
 
+#create-form input, #create-form textarea {
+    background-color: var(--primary);
+    border: none;
+}
+
+#create-form input::placeholder, #create-form textarea::placeholder {
+    opacity: 0.3;
+}
+
+#create-form input:focus, #create-form textarea:focus {
+    color: var(--font);
+}
+
+#create-form textarea {
+    resize: vertical;
+    align-self: stretch;
+}
+
+#create-form button {
+    background-color: var(--primary);
+    border-radius: none;
+}
+
+#create-form button:hover {
+    color: var(--primary-light);
+    border-color: var(--font);
+    background-color: var(--font);
+}
+
+#create-title {
+    font-weight: bold;
+    font-size: calc(var(--font-size) + 5pt);
+}
+
+#create-text {
+    align-self: stretch;
+    flex-grow: 1;
+}
 
 /* ------------------- */
 
@@ -189,4 +231,12 @@ form input:focus, form textarea:focus {
     background-color: var(--red);
     color: var(--font);
     padding: 5px 10px;
+}
+
+.message-close {
+    float: right;
+}
+
+.message-close:hover {
+    cursor: pointer;
 }
