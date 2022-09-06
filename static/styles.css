@@ -24,7 +24,7 @@ a {
 }
 
 hr {
-    width: 100%;
+    width: 99%;
 }
 
 nav {
@@ -78,6 +78,9 @@ nav {
 }
 
 #nav-edit {
+    transition: 0.1s;
+    user-select: none;
+    cursor: pointer;
     padding: 5px 10px;
     border: 1px solid var(--accent);
     color: var(--accent);
@@ -135,7 +138,7 @@ form input, form textarea {
     padding: 5px 10px;
 }
 
-form button {
+button {
     background-color: var(--primary-light);
     border: 1px solid var(--font);
     color: var(--font);
@@ -144,7 +147,7 @@ form button {
     border-radius: 8px;
 }
 
-form button:hover {
+button:hover {
     cursor: pointer;
     background-color: var(--font);
     border: 1px solid var(--primary-light);
@@ -251,6 +254,48 @@ form input:focus, form textarea:focus {
 .note-prev-created {
     font-size: calc(var(--font-size) - 5pt);
     opacity: 0.45;
+}
+
+/* ------------ NOTE VIEW ------------ */
+
+#note-view {
+    padding: 10px 10px;
+}
+
+#note-title {
+    font-weight: bold;
+    font-size: calc(var(--font-size) + 2pt);
+    word-break: break-all;
+}
+
+#note-date {
+    font-size: calc(var(--font-size) - 3pt);
+    opacity: 0.45;
+}
+
+#note-text {
+    font-size: calc(var(--font-size) - 2pt);
+    word-break: break-word;
+}
+
+#note-text:focus, #note-title:focus {
+    outline: none;
+}
+
+#save-button-div {
+    background-color: var(--primary);
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#save-button {
+    width: 80%;
+    font-size: calc(var(--font-size) - 2pt);
 }
 
 /* ------------ FLOATING ACTIONS ------------ */

@@ -18,16 +18,26 @@
     </div>
 </nav>
 
-<div id="note-title">
-{{ note.title }}
+<div id="note-view">
+    
+    <div id="note-title">
+    {{ note.title }}
+    </div>
+
+    <div id="note-date">
+    Created: {{ note.created.strftime("%x %X") }}
+    </div>
+
+    <hr>
+
+    <div id="note-text">
+    {{ note.text }}
 </div>
 
-<div id="note-date">
-{{ note.created }}
+<div id="save-button-div">
+    <button id="save-button">Save</button>
 </div>
 
-<div id="note-text">
-{{ note.text }}
 </div>
 
 {% endblock %}
