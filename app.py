@@ -1,5 +1,6 @@
 from flask import request, flash, jsonify
 from flask_login import current_user
+from sqlalchemy import desc
 from werkzeug.security import generate_password_hash, check_password_hash
 from objects import *
 
@@ -69,7 +70,7 @@ def logout():
 @app.route("/")
 @login_required
 def index():
-    user_notes = Note.query.filter(Note.author==current_user.id).all()
+    user_notes = Note.query.filter(Note.author==current_user.id).order_by(Note.edited.desc(), Note.created.desc()).all()
 
     return render_template("index.html", notes=user_notes)
 
