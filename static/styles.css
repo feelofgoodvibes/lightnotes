@@ -23,6 +23,10 @@ a {
     color: var(--font);
 }
 
+hr {
+    width: 100%;
+}
+
 nav {
     background-color: var(--primary-light);
     display: flex;
@@ -32,9 +36,9 @@ nav {
 }
 
 :root {
-    --primary: #111111;
-    --primary-light: #252525;
-    --font: #e6e6e6;
+    --primary: #000000;
+    --primary-light: #111111;
+    --font: #FCFBFE;
     --red: #DC3545;
     --font-size: 15pt;
 
@@ -198,7 +202,48 @@ form input:focus, form textarea:focus {
     flex-grow: 1;
 }
 
-/* ------------------- */
+/* ------------ NOTES LIST ------------ */
+
+#notes {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-light);
+    border-radius: 15px;
+    margin: 10px 20px;
+    padding: 20px 0;
+}
+
+#notes hr {
+    opacity: 0.3;
+    margin: 20px 0;
+}
+
+.note-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.note-prev {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.note-prev-title {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: calc(var(--font-size) - 2pt);
+}
+
+.note-prev-created {
+    font-size: calc(var(--font-size) - 5pt);
+    opacity: 0.4;
+}
+
+/* ------------ FLOATING ACTIONS ------------ */
 
 #floating-actions {
     position: fixed;

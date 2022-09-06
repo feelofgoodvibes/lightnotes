@@ -20,7 +20,18 @@
 
 <div id="notes">
     {% for note in notes %}
-    <div class="note-prev">{{ note.text }}</div>
+    <div id="note-{{note.id}}" class="note-prev">
+        <div class="note-info">
+            <span class="note-prev-title" onclick="location.href = '/note/' + this.parentElement.parentElement.id.slice(5)">{{ note.title }}</span>
+            <span class="note-prev-created">Created: {{ note.created.strftime("%x %X") }}</span>
+        </div>
+        <span class="note-prev-delete">x</span>
+    </div>
+    
+    {% if loop.index <= notes|length-1 %}
+    <hr>
+    {% endif %}
+
     {% endfor %}
 </div>
 
