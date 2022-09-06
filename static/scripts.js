@@ -1,6 +1,22 @@
 window.addEventListener("load", () => {
     if (location.href.split("/").includes("note")) initEdit();
+    if (location.pathname == "/") initIndex();
 });
+
+function initIndex() {
+    for (let delButton of $(".note-prev-delete")){
+        console.log();
+
+        delButton.addEventListener("click", () => {
+            $.ajax({
+                url: "/note/" + delButton.parentElement.id.slice(5),
+                method: "DELETE",
+                success: (resp) => { location.reload(); },
+                error: (resp) => { console.log(resp.responseJSON['error']); }
+            });
+        })
+    }
+}
 
 function initEdit() {
     let editButton = document.getElementById("nav-edit");

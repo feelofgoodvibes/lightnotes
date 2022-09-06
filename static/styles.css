@@ -35,6 +35,10 @@ nav {
     padding: 10px 5px;
 }
 
+a {
+    color: var(--accent);
+}
+
 :root {
     --primary: #000000;
     --primary-light: #111111;
@@ -115,6 +119,10 @@ nav {
     max-width: 500px;
     padding: 50px 40px;
     gap: 10px;
+    text-align: center;
+}
+
+.center-text {
     text-align: center;
 }
 

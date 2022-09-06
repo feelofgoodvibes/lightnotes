@@ -101,7 +101,7 @@ def create():
         return redirect("/note/"+str(new_note.id))
 
 
-@app.route("/note/<int:note_id>", methods=["GET", "PUT", "DETETE"])
+@app.route("/note/<int:note_id>", methods=["GET", "PUT", "DELETE"])
 @login_required
 def note(note_id):
     note_query = Note.query.filter(Note.id==note_id)

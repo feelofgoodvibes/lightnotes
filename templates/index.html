@@ -18,6 +18,7 @@
     </div>
 </nav>
 
+{% if notes | length > 0 %}
 <div id="notes">
     {% for note in notes %}
     <div id="note-{{note.id}}" class="note-prev">
@@ -39,6 +40,15 @@
 
     {% endfor %}
 </div>
+{% else %}
+<div id="notes">
+    <div class="center-text">
+        👀 There is no notes...
+        <br>
+        Go on, <a href="/create">create first one!</a>
+    </div>
+</div>
+{% endif %}
 
 <div id="floating-actions">
     <a id="floating-create" href="/create">✎</a>
