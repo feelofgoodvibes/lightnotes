@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ note.title }}</title>
+{% endblock %}
+
+{% block body %}
+
+<nav>
+    <div class="nav-left">
+        <img id="nav-icon" src="{{ url_for('static', filename='favicon.svg') }}">
+        <a id="nav-title" class="nav-text" href="/">Light Notes</a>
+        <span class="nav-text">| {{ current_user.login }}</span>
+    </div>
+    
+    <div class="nav-right">
+        <a id="nav-edit">Edit</a>
+    </div>
+</nav>
+
+<div id="note-title">
+{{ note.title }}
+</div>
+
+<div id="note-date">
+{{ note.created }}
+</div>
+
+<div id="note-text">
+{{ note.text }}
+</div>
+
+{% endblock %}

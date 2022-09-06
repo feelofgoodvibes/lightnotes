@@ -100,15 +100,22 @@ def create():
         return redirect("/note/"+str(new_note.id))
 
 
-@app.route("/note/<int:note_id>")
+@app.route("/note/<int:note_id>", methods=["GET", "PUT", "DETETE"])
 @login_required
 def note(note_id):
-    note = Note.query.filter(Note.id==note_id).first()
+    if request.method == "GET":
+        note = Note.query.filter(Note.id==note_id).first()
 
-    if not note or note.author != current_user.id:
-        return redirect("/")
+        if not note or note.author != current_user.id:
+            return redirect("/")
 
-    return "hehe"
+        return render_template("note.html", note=note)
+    
+    elif request.method == "DELETE":
+        pass
+
+    elif request.method == "PUT":
+        pass
 
 if __name__ == "__main__":
     app.run(debug=True)

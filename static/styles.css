@@ -63,7 +63,6 @@ nav {
 }
 
 #nav-logout {
-    float: right;
     color: var(--red);
     padding: 5px 10px;
     border: 1px solid var(--red);
@@ -76,6 +75,15 @@ nav {
     background-color: var(--red);
     color: var(--font);
     transition: .2s;
+}
+
+#nav-edit {
+    padding: 5px 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: calc(var(--font-size) - 4pt);
 }
 
 .nav-right {
