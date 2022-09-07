@@ -23,9 +23,9 @@
     <div id="note-title">{{ note.title }}</div>
 
     <div class="date-row">
-        <div id="note-date">Created: {{ note.created.strftime("%x %X") }}</div>
+        <div id="note-date">Created: {{ note.created.strftime("%X %x") }}</div>
         {% if note.edited %}
-        <div id="note-date">Edited: {{ note.edited.strftime("%x %X") }}</div>
+        <div id="note-date">Edited: {{ note.edited.strftime("%X %x") }}</div>
         {% endif %}
     </div>
 

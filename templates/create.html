@@ -6,6 +6,7 @@
 
 {% block body %}
 
+<div class="box">
 <nav>
     <div class="nav-left">
         <img id="nav-icon" src="{{ url_for('static', filename='favicon.svg') }}">
@@ -34,7 +35,8 @@
 <form id="create-form" method="POST" action="/create">
     <input id="create-title" type="text" name="title" placeholder="Title...">
     <textarea id="create-text" name="text" placeholder="Text..."></textarea>
-    <button>Create</button>
+    <button id="create-button">Create</button>
 </form>
+</div>
 
 {% endblock %}
